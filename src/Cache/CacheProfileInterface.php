@@ -12,10 +12,9 @@ interface CacheProfileInterface
      *
      */
 
-    public function uniqueId(): string;
-
-
     public function prefix(): string;
 
-    public function tag(): string;
+    public function basePrefix(): string;
+
+    public function cachePrefix(): string;
 }

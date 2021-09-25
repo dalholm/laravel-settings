@@ -7,16 +7,17 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Cache profile
+    | Cache
     |--------------------------------------------------------------------------
-    | This can be used to make your own logic
+    | Cache is only working with redis and uses cache tags
     |
     */
-    'cache_profile' => Dalholm\LaravelSettings\Cache\CacheProfile::class,
 
-    'cache_prefix' => 'laravel-settings',
-
-    'cache_store' => 'redis',
+    'cache' => [
+        'enabled' => env('SETTINGS_CACHE_ENABLED', false),
+        'profile' => Dalholm\LaravelSettings\Cache\CacheProfile::class,
+        'store' => null,
+    ],
 
     /*
     |--------------------------------------------------------------------------

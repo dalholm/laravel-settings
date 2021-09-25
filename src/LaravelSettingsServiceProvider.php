@@ -3,6 +3,7 @@
 namespace Dalholm\LaravelSettings;
 
 use Dalholm\LaravelSettings\Cache\CacheProfileInterface;
+use Dalholm\LaravelSettings\Cache\CacheRepository;
 use Illuminate\Cache\Repository;
 use Illuminate\Container\Container;
 use Illuminate\Support\ServiceProvider;
@@ -55,13 +56,13 @@ class LaravelSettingsServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'laravel-settings');
 
         $this->app->bind(CacheProfileInterface::class, function (Container $app) {
-            return $app->make(config('laravel-settings.cache_profile'));
+            return $app->make(config('laravel-settings.cache.profile'));
         });
 
         $this->app->when(CacheRepository::class)
             ->needs(Repository::class)
             ->give(function (): Repository {
-                return app('cache')->store(config('laravel-settings.cache_store'));
+                return app('cache')->store(config('laravel-settings.cache.store'));
             });
 
         // Register the main class to use with the facade

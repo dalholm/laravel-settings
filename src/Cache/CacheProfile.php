@@ -3,9 +3,9 @@
 namespace Dalholm\LaravelSettings\Cache;
 
 
-class CacheProfile extends DefaultCacheProfile
+class CacheProfile extends BaseCacheProfile
 {
-    public function uniqueId() : string
+    public function prefix(): string
     {
         return '';
     }
