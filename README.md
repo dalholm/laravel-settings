@@ -2,7 +2,6 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/dalholm/laravel-settings.svg?style=flat-square)](https://packagist.org/packages/dalholm/laravel-settings)
 [![Total Downloads](https://img.shields.io/packagist/dt/dalholm/laravel-settings.svg?style=flat-square)](https://packagist.org/packages/dalholm/laravel-settings)
-![GitHub Actions](https://github.com/dalholm/laravel-settings/actions/workflows/main.yml/badge.svg)
 
 Simple and powerful settings package for laravel with fallback and cache option. 
 
@@ -19,16 +18,81 @@ composer require dalholm/laravel-settings
 php artisan vendor:publish --tag=laravel-settings
 ```
 
+
+
+## Config
+```php
+/*
+ * You can place your custom package configuration in here.
+ */
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Cache
+    |--------------------------------------------------------------------------
+    | Cache is only working with redis and uses cache tags
+    |
+    */
+
+    'cache' => [
+        'enabled' => env('SETTINGS_CACHE_ENABLED', false),
+        'profile' => Dalholm\LaravelSettings\Cache\CacheProfile::class,
+        'store' => null,
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Database settings
+    |--------------------------------------------------------------------------
+    | You could use what ever you want
+    |
+    */
+    'database' => [
+        'connection'    => null,
+        'table'         => 'settings',
+        'key'           => 'key',
+        'value'         => 'value',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Fallback
+    |--------------------------------------------------------------------------
+    | Use this as a fallback if settings is not yet available in database
+    |
+    | Example:
+    |       "power" => "is-on"
+    |
+    */
+
+    'fallback' => [
+        //
+    ],
+
+];
+```
+
 ## Usage
 
 ```php
-// Usage description here
-```
+// Create / update setting or settings
+// Settings will automatically update database and replace cache
+settings(['key' => 'value']);
 
-### Testing
 
-```bash
-composer test
+// Create / update multple
+settings([
+   'key 1' => 'value 1',
+   'key 2' => 'value 2',
+   'key 3' => 'value 3',
+   // etc 
+]);
+
+
+// Get
+settings('key');
+
 ```
 
 ### Changelog
