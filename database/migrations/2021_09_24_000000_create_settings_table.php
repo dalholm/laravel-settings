@@ -10,9 +10,9 @@ class CreateSettingsTable extends Migration
      */
     public function __construct()
     {
-        $this->table = config('setting.database.table');
-        $this->key = config('setting.database.key');
-        $this->value = config('setting.database.value');
+        $this->table = config('laravel-settings.database.table');
+        $this->key = config('laravel-settings.database.key');
+        $this->value = config('laravel-settings.database.value');
     }
 
     /**
