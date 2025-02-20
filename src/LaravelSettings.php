@@ -11,6 +11,12 @@ use Illuminate\Support\Arr;
 
 class LaravelSettings
 {
+    /**
+     * The Application
+     *
+     * @var \Illuminate\Foundation\Application
+     */
+    protected $container;
 
     /**
      * The database connection instance.
