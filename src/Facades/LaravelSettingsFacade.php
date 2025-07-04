@@ -4,7 +4,7 @@ namespace Dalholm\LaravelSettings\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class ResponseCache extends Facade
+class LaravelSettingsFacade extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
